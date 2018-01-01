@@ -1,4 +1,4 @@
-﻿namespace AlienFace
+﻿namespace AlienFaces
 {
     using System.Collections.Generic;
 

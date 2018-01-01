@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace AlienFace
+namespace AlienFaces
 {
-
+    using FacialStuff;
     using FacialStuff.Defs;
     using FacialStuff.FaceEditor;
     using FacialStuff.FaceEditor.UI.DTO;
@@ -27,10 +27,11 @@ namespace AlienFace
 
         private readonly AlienRace alienRace;
 
-        public Dialog_AlienFaceStyling(Pawn p, ThingDef_AlienRace alienProp) : base(p)
+        public Dialog_AlienFaceStyling(CompFace face, ThingDef_AlienRace alienProp) : base(face)
         {
+            pawn = face.Pawn;
             PawnColorUtils.InitializeColors();
-            this.alienRace = ProviderAlienRaces.GetAlienRace(alienProp, p);
+            this.alienRace = ProviderAlienRaces.GetAlienRace(alienProp, pawn);
             if (this.alienRace.HasHair)
             {
                 HairDefs = DefDatabase<HairDef>.AllDefsListForReading.FindAll(
@@ -447,7 +448,7 @@ namespace AlienFace
             int thisColumns = Columns / divider / iconSides;
             float thisEntrySize = EntrySize * divider;
 
-            int rowsCount = Mathf.CeilToInt(filteredHairDefs.Count / (float)thisColumns);
+            int rowsCount = Mathf.CeilToInt(FilteredHairDefs.Count / (float)thisColumns);
 
             rect3.height = rowsCount * thisEntrySize;
 
@@ -480,12 +481,12 @@ namespace AlienFace
             }
             GUI.BeginGroup(rect3);
 
-            for (int i = 0; i < filteredHairDefs.Count; i++)
+            for (int i = 0; i < FilteredHairDefs.Count; i++)
             {
                 int yPos = i / thisColumns;
                 int xPos = i % thisColumns;
                 Rect rect4 = new Rect(xPos * vector.x, yPos * vector.y, vector.x, vector.y);
-                this.DrawHairPickerCell(filteredHairDefs[i], rect4.ContractedBy(3f));
+                this.DrawHairPickerCell(FilteredHairDefs[i], rect4.ContractedBy(3f));
             }
 
             GUI.EndGroup();

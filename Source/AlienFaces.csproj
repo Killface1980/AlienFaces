@@ -53,8 +53,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AlienDrawer.cs" />
+    <Compile Include="AlienHeadDrawer.cs" />
     <Compile Include="AlienRace.cs" />
+    <Compile Include="AlienBipedDrawer.cs" />
     <Compile Include="Dialog_AlienFaceStyling.cs" />
     <Compile Include="Extensions.cs" />
     <Compile Include="HarmonyPatchesAlien.cs" />

@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
-namespace AlienFace
+namespace AlienFaces
 {
     using UnityEngine;
 

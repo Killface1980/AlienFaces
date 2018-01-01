@@ -1,6 +1,8 @@
-﻿namespace AlienFace
+﻿namespace AlienFaces
 {
     using System.Reflection;
+
+    using FacialStuff;
 
     using Harmony;
 
@@ -28,7 +30,8 @@
         {
             if (pawn.def is ThingDef_AlienRace alienProp)
             {
-                Find.WindowStack.Add(new Dialog_AlienFaceStyling(pawn, alienProp));
+                pawn.GetCompFace(out CompFace face);
+                Find.WindowStack.Add(new Dialog_AlienFaceStyling(face, alienProp));
                 return false;
             }
             return true;

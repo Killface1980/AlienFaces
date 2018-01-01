@@ -1,35 +1,89 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Patch>
+ 
+  <!--Androids-->
   <Operation Class="PatchOperationSequence">
     <success>Always</success>
     <operations>
       <li Class="PatchOperationConditional">
         <xpath>
-          /Defs/AlienRace.ThingDef_AlienRace [defName = "Alien_Zabrak"]/comps</xpath>
+          /Defs/AlienRace.ThingDef_AlienRace [defName = "ChjAndroid"]/comps
+        </xpath>
         <success>Always</success>
         <nomatch Class="PatchOperationAdd">
-          <xpath>/Defs/AlienRace.ThingDef_AlienRace [defName = "Alien_Zabrak"]</xpath>
+          <xpath>/Defs/AlienRace.ThingDef_AlienRace [defName = "ChjAndroid"]</xpath>
           <value>
             <comps />
           </value>
         </nomatch>
       </li>
       <li Class="PatchOperationAdd">
-        <xpath>/Defs/AlienRace.ThingDef_AlienRace [defName = "Alien_Zabrak"]/comps</xpath>
+        <xpath>/Defs/AlienRace.ThingDef_AlienRace [defName = "ChjAndroid"]/comps</xpath>
         <value>
+          <li Class = "FacialStuff.CompProperties_BodyAnimator">
+            <bipedWithHands>true</bipedWithHands>
+            <handType>Human</handType>
+            <drawers>
+              <li Class ="AlienFaces.AlienBipedDrawer"/>
+            </drawers>
+          </li>
           <li Class = "FacialStuff.CompProperties_Face">
-            <needsBlankHumanHead>false</needsBlankHumanHead> 
-            <hasMouth>true</hasMouth>
+            <needsBlankHumanHead>false</needsBlankHumanHead>
+            <hasMouth>false</hasMouth>
             <hasBeard>false</hasBeard>
             <hasWrinkles>false</hasWrinkles>
             <hasEyes>false</hasEyes>
             <canRotateHead>true</canRotateHead>
-            <hasHands>true</hasHands>
-            <handType>Human</handType>
-            <needsAlienHair>true</needsAlienHair>
+            <hasOrganicHair>false</hasOrganicHair>
+            <useAlienRacesHairTags>true</useAlienRacesHairTags>
             <drawers>
-              <li Class ="AlienFace.AlienDrawer"/>
-            <!--  <li Class ="FacialStuff.SecondHeadDrawer"/>-->
+              <li Class ="AlienFaces.AlienHeadDrawer"/>
+              <!--  <li Class ="FacialStuff.SecondHeadDrawer"/>-->
+            </drawers>
+          </li>
+        </value>
+      </li>
+    </operations>
+  </Operation>
+
+  <!--Orassans-->
+  <Operation Class="PatchOperationSequence">
+    <success>Always</success>
+    <operations>
+      <li Class="PatchOperationConditional">
+        <xpath>
+          /Defs/AlienRace.ThingDef_AlienRace [defName = "Alien_Orassan"]/comps
+        </xpath>
+        <success>Always</success>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>/Defs/AlienRace.ThingDef_AlienRace [defName = "Alien_Orassan"]</xpath>
+          <value>
+            <comps />
+          </value>
+        </nomatch>
+      </li>
+      <li Class="PatchOperationAdd">
+        <xpath>/Defs/AlienRace.ThingDef_AlienRace [defName = "Alien_Orassan"]/comps</xpath>
+        <value>
+          <li Class = "FacialStuff.CompProperties_BodyAnimator">
+            <bipedWithHands>true</bipedWithHands>
+            <handType>Human</handType>
+            <drawers>
+              <li Class ="AlienFaces.AlienBipedDrawer"/>
+            </drawers>
+          </li>
+          <li Class = "FacialStuff.CompProperties_Face">
+            <needsBlankHumanHead>false</needsBlankHumanHead>
+            <hasMouth>false</hasMouth>
+            <hasBeard>false</hasBeard>
+            <hasWrinkles>false</hasWrinkles>
+            <hasEyes>false</hasEyes>
+            <canRotateHead>true</canRotateHead>
+            <hasOrganicHair>false</hasOrganicHair>
+            <useAlienRacesHairTags>true</useAlienRacesHairTags>
+            <drawers>
+              <li Class ="AlienFaces.AlienHeadDrawer"/>
+              <!--  <li Class ="FacialStuff.SecondHeadDrawer"/>-->
             </drawers>
           </li>
         </value>
@@ -37,12 +91,14 @@
     </operations>
   </Operation>
  
+  <!--Twilek-->
   <Operation Class="PatchOperationSequence">
     <success>Always</success>
     <operations>
       <li Class="PatchOperationConditional">
         <xpath>
-          /Defs/AlienRace.ThingDef_AlienRace [defName = "Alien_Twilek"]/comps</xpath>
+          /Defs/AlienRace.ThingDef_AlienRace [defName = "Alien_Twilek"]/comps
+        </xpath>
         <success>Always</success>
         <nomatch Class="PatchOperationAdd">
           <xpath>/Defs/AlienRace.ThingDef_AlienRace [defName = "Alien_Twilek"]</xpath>
@@ -54,33 +110,40 @@
       <li Class="PatchOperationAdd">
         <xpath>/Defs/AlienRace.ThingDef_AlienRace [defName = "Alien_Twilek"]/comps</xpath>
         <value>
+          <li Class = "FacialStuff.CompProperties_BodyAnimator">
+            <bipedWithHands>true</bipedWithHands>
+            <handType>Human</handType>
+            <drawers>
+              <li Class ="AlienFaces.AlienBipedDrawer"/>
+            </drawers>
+          </li>
           <li Class = "FacialStuff.CompProperties_Face">
-            <needsBlankHumanHead>false</needsBlankHumanHead> 
+            <needsBlankHumanHead>false</needsBlankHumanHead>
             <hasMouth>true</hasMouth>
             <hasBeard>false</hasBeard>
             <hasWrinkles>false</hasWrinkles>
             <hasEyes>false</hasEyes>
             <canRotateHead>true</canRotateHead>
             <hasOrganicHair>true</hasOrganicHair>
-            <hasHands>true</hasHands>
-            <handType>Human</handType>
-            <needsAlienHair>true</needsAlienHair>
+            <useAlienRacesHairTags>true</useAlienRacesHairTags>
             <drawers>
-              <li Class ="AlienFace.AlienDrawer"/>
-            <!--  <li Class ="FacialStuff.SecondHeadDrawer"/>-->
+              <li Class ="AlienFaces.AlienHeadDrawer"/>
+              <!--  <li Class ="FacialStuff.SecondHeadDrawer"/>-->
             </drawers>
           </li>
         </value>
       </li>
     </operations>
   </Operation>
- 
+
+  <!--Xenn-->
   <Operation Class="PatchOperationSequence">
     <success>Always</success>
     <operations>
       <li Class="PatchOperationConditional">
         <xpath>
-          /Defs/AlienRace.ThingDef_AlienRace [defName = "Alien_Xenn"]/comps</xpath>
+          /Defs/AlienRace.ThingDef_AlienRace [defName = "Alien_Xenn"]/comps
+        </xpath>
         <success>Always</success>
         <nomatch Class="PatchOperationAdd">
           <xpath>/Defs/AlienRace.ThingDef_AlienRace [defName = "Alien_Xenn"]</xpath>
@@ -92,25 +155,75 @@
       <li Class="PatchOperationAdd">
         <xpath>/Defs/AlienRace.ThingDef_AlienRace [defName = "Alien_Xenn"]/comps</xpath>
         <value>
+          <li Class = "FacialStuff.CompProperties_BodyAnimator">
+            <bipedWithHands>true</bipedWithHands>
+            <handType>Human</handType>
+            <drawers>
+              <li Class ="AlienFaces.AlienBipedDrawer"/>
+            </drawers>
+          </li>
           <li Class = "FacialStuff.CompProperties_Face">
-            <needsBlankHumanHead>false</needsBlankHumanHead> 
+            <needsBlankHumanHead>false</needsBlankHumanHead>
             <hasMouth>false</hasMouth>
             <hasBeard>false</hasBeard>
             <hasWrinkles>false</hasWrinkles>
             <hasEyes>false</hasEyes>
             <canRotateHead>true</canRotateHead>
             <hasOrganicHair>false</hasOrganicHair>
-            <hasHands>true</hasHands>
-            <handType>Human</handType>
-            <needsAlienHair>true</needsAlienHair>
+            <useAlienRacesHairTags>true</useAlienRacesHairTags>
             <drawers>
-              <li Class ="AlienFace.AlienDrawer"/>
-            <!--  <li Class ="FacialStuff.SecondHeadDrawer"/>-->
+              <li Class ="AlienFaces.AlienHeadDrawer"/>
+              <!--  <li Class ="FacialStuff.SecondHeadDrawer"/>-->
             </drawers>
           </li>
         </value>
       </li>
     </operations>
   </Operation>
-  
+ 
+  <!--Zabrak-->
+  <Operation Class="PatchOperationSequence">
+    <success>Always</success>
+    <operations>
+      <li Class="PatchOperationConditional">
+        <xpath>
+          /Defs/AlienRace.ThingDef_AlienRace [defName = "Alien_Zabrak"]/comps
+        </xpath>
+        <success>Always</success>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>/Defs/AlienRace.ThingDef_AlienRace [defName = "Alien_Zabrak"]</xpath>
+          <value>
+            <comps />
+          </value>
+        </nomatch>
+      </li>
+      <li Class="PatchOperationAdd">
+        <xpath>/Defs/AlienRace.ThingDef_AlienRace [defName = "Alien_Zabrak"]/comps</xpath>
+        <value>
+          <li Class = "FacialStuff.CompProperties_BodyAnimator">
+            <bipedWithHands>true</bipedWithHands>
+            <handType>Human</handType>
+            <drawers>
+              <li Class ="AlienFaces.AlienBipedDrawer"/>
+            </drawers>
+          </li>
+          <li Class = "FacialStuff.CompProperties_Face">
+            <needsBlankHumanHead>false</needsBlankHumanHead>
+            <hasMouth>true</hasMouth>
+            <hasBeard>false</hasBeard>
+            <hasWrinkles>false</hasWrinkles>
+            <hasEyes>false</hasEyes>
+            <canRotateHead>true</canRotateHead>
+            <useAlienRacesHairTags>true</useAlienRacesHairTags>
+            <drawers>
+              <li Class ="AlienFaces.AlienHeadDrawer"/>
+              <!--  <li Class ="FacialStuff.SecondHeadDrawer"/>-->
+            </drawers>
+          </li>
+        </value>
+      </li>
+    </operations>
+  </Operation>
+
+
 </Patch>
