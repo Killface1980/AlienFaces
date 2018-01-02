@@ -47,6 +47,7 @@
             int counter = 1;
             while (f < 1.0f)
             {
+                // ReSharper disable once PossibleNullReferenceException
                 int result = (int)getSkinDataIndexOfMelaninMethod.Invoke(null, new object[] { f });
                 if (result != currentIndex)
                 {

@@ -23,7 +23,7 @@ namespace AlienFaces
 
         public override void BaseHeadOffsetAt(ref Vector3 offset, bool portrait)
         {
-            var pawn = this.Pawn;
+            Pawn pawn = this.Pawn;
 
             // + Alien offsets if any
             if (pawn.def is ThingDef_AlienRace alienProps)
@@ -32,9 +32,9 @@ namespace AlienFaces
                 if (alienOff != Vector2.zero)
                 {
                     // Vanilla offsets for Aliens
-                    var o = offset;
+                    Vector3 o = offset;
                     float num = HorHeadOffsets[(int)pawn.story.bodyType];
-                    switch (this.bodyFacing.AsInt)
+                    switch (this.BodyFacing.AsInt)
                     {
                         case 0:
                             o = new Vector3(0f, 0f, 0.34f);
@@ -69,14 +69,14 @@ namespace AlienFaces
             this.CompFace.Pawn.def is ThingDef_AlienRace alienProps ?
                 portrait ?
                     wantsBody ?
-                        alienProps.alienRace.generalSettings.alienPartGenerator.bodyPortraitSet.MeshAt(this.bodyFacing) :
-                        alienProps.alienRace.generalSettings.alienPartGenerator.headPortraitSet.MeshAt(this.headFacing) :
+                        alienProps.alienRace.generalSettings.alienPartGenerator.bodyPortraitSet.MeshAt(this.BodyFacing) :
+                        alienProps.alienRace.generalSettings.alienPartGenerator.headPortraitSet.MeshAt(this.HeadFacing) :
                     wantsBody ?
-                        alienProps.alienRace.generalSettings.alienPartGenerator.bodySet.MeshAt(this.bodyFacing) :
-                        alienProps.alienRace.generalSettings.alienPartGenerator.headSet.MeshAt(this.headFacing) :
+                        alienProps.alienRace.generalSettings.alienPartGenerator.bodySet.MeshAt(this.BodyFacing) :
+                        alienProps.alienRace.generalSettings.alienPartGenerator.headSet.MeshAt(this.HeadFacing) :
                 wantsBody ?
-                    MeshPool.humanlikeBodySet.MeshAt(this.bodyFacing) :
-                    MeshPool.humanlikeHeadSet.MeshAt(this.headFacing);
+                    MeshPool.humanlikeBodySet.MeshAt(this.BodyFacing) :
+                    MeshPool.humanlikeHeadSet.MeshAt(this.HeadFacing);
 
         public override Mesh GetPawnHairMesh(bool portrait) =>
             this.CompFace.Pawn.def is ThingDef_AlienRace alienProps ?
@@ -86,12 +86,12 @@ namespace AlienFaces
                           alienProps.alienRace.generalSettings.alienPartGenerator.hairSetNarrow) :
                      (portrait ?
                           alienProps.alienRace.generalSettings.alienPartGenerator.hairPortraitSetAverage :
-                          alienProps.alienRace.generalSettings.alienPartGenerator.hairSetAverage)).MeshAt(headFacing) :
-                Graphics.HairMeshSet.MeshAt(headFacing);
+                          alienProps.alienRace.generalSettings.alienPartGenerator.hairSetAverage)).MeshAt(HeadFacing) :
+                Graphics.HairMeshSet.MeshAt(HeadFacing);
 
         public override void DrawAlienBodyAddons(Quaternion quat, Vector3 rootLoc, bool portrait, bool renderBody)
         {
-            var pawn = this.CompFace.Pawn;
+            Pawn pawn = this.CompFace.Pawn;
             if (pawn.def is ThingDef_AlienRace alienProps)
             {
 
@@ -107,7 +107,7 @@ namespace AlienFaces
 
                         Mesh mesh = portrait ? ba.addonPortraitMeshFlipped : ba.addonMesh;
 
-                        Rot4 rotation = this.bodyFacing;
+                        Rot4 rotation = this.BodyFacing;
                         if (portrait)
                             rotation = Rot4.South;
                         AlienPartGenerator.RotationOffset offset =
