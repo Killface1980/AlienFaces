@@ -1,19 +1,13 @@
 ﻿using System;
+using System.Reflection;
+using AlienRace;
+using FacialStuff;
+using FacialStuff.Harmony;
+using Harmony;
+using Verse;
 
 namespace AlienFaces
 {
-    using System.Reflection;
-
-    using FacialStuff;
-
-    using Harmony;
-
-    using Verse;
-
-    using FacialStuff.Harmony;
-
-    using global::AlienRace;
-
     [StaticConstructorOnStartup]
     public static class HarmonyPatchesAlien
     {

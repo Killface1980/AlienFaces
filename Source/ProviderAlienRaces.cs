@@ -1,27 +1,18 @@
-﻿namespace AlienFaces
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Reflection;
+using AlienRace;
+using JetBrains.Annotations;
+using RimWorld;
+using UnityEngine;
+using Verse;
+
+namespace AlienFaces
 {
-    using System;
-    using System.Collections;
-    using System.Collections.Generic;
-    using System.Reflection;
-
-    using global::AlienRace;
-
-    using JetBrains.Annotations;
-
-    using RimWorld;
-
-    using UnityEngine;
-
-    using Verse;
-
     public class ProviderAlienRaces
     {
         protected static Dictionary<ThingDef_AlienRace, AlienRace> lookup = new Dictionary<ThingDef_AlienRace, AlienRace>();
-        public ProviderAlienRaces()
-        {
-
-        }
 
         [CanBeNull]
         public static AlienRace GetAlienRace(ThingDef_AlienRace def, Pawn p)
@@ -31,16 +22,14 @@
             {
                 return result;
             }
-            else
-            {
-                result = InitializeAlienRace(def, p);
-                if (result != null)
-                {
-                    lookup.Add(def, result);
-                }
 
-                return result;
+            result = InitializeAlienRace(def, p);
+            if (result != null)
+            {
+                lookup.Add(def, result);
             }
+
+            return result;
         }
 
         [CanBeNull]
@@ -75,7 +64,7 @@
             {
                 foreach (BodyType o in alienbodytypes)
                 {
-                    bodyTypes.Add((BodyType)o);
+                    bodyTypes.Add(o);
                 }
             }
 
@@ -214,10 +203,8 @@
 
                     return null;
                 }
-                else
-                {
-                    return result;
-                }
+
+                return result;
             }
             catch (Exception)
             {
@@ -234,16 +221,14 @@
                 return null;
             }
 
-            ICollection collection = result as System.Collections.ICollection;
+            ICollection collection = result as ICollection;
             if (collection == null)
             {
                 Log.Warning("Prepare carefully could not convert " + name + " field value into a collection for " + raceDef.defName + ".");
                 return null;
             }
-            else
-            {
-                return collection;
-            }
+
+            return collection;
         }
 
         protected static bool? GetFieldValueAsBool(ThingDef raceDef, object source, string name)
@@ -258,11 +243,9 @@
             {
                 return (bool)result;
             }
-            else
-            {
-                Log.Warning("Prepare carefully could not convert " + name + " field value into a bool for " + raceDef.defName + ".");
-                return null;
-            }
+
+            Log.Warning("Prepare carefully could not convert " + name + " field value into a bool for " + raceDef.defName + ".");
+            return null;
         }
 
         protected static string GetFieldValueAsString(ThingDef raceDef, object source, string name)
@@ -278,11 +261,9 @@
             {
                 return result;
             }
-            else
-            {
-                Log.Warning("Prepare carefully could not convert " + name + " field value into a string for " + raceDef.defName + ".");
-                return null;
-            }
+
+            Log.Warning("Prepare carefully could not convert " + name + " field value into a string for " + raceDef.defName + ".");
+            return null;
         }
     }
 }

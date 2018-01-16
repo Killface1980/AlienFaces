@@ -1,23 +1,14 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using AlienRace;
+using FacialStuff;
+using UnityEngine;
+using Verse;
 
 namespace AlienFaces
 {
-
-    using FacialStuff;
-
-    using global::AlienRace;
-
-    using UnityEngine;
-
-    using Verse;
-
     public class AlienHeadDrawer : HumanHeadDrawer
     {
-        public AlienHeadDrawer()
-        {
-            // Needs a constructor
-        }
         // Vanilla offsets
         public static readonly float[] HorHeadOffsets = { 0f, 0.04f, 0.1f, 0.09f, 0.1f, 0.09f };
 

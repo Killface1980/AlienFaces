@@ -1,15 +1,13 @@
-﻿namespace AlienFaces
+﻿using System;
+using System.Collections.Generic;
+using System.Reflection;
+using RimWorld;
+using UnityEngine;
+using Verse;
+// ReSharper disable All
+
+namespace AlienFaces
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Reflection;
-
-    using RimWorld;
-
-    using UnityEngine;
-
-    using Verse;
-
     public static class PawnColorUtils
     {
         // The values will match the color values in the PawnSkinColors class.  We use a round-about way of getting at
@@ -36,7 +34,7 @@
             // Get the private GetSkinDataLeftIndexByWhiteness() method from the PawnSkinColors class.
             MethodInfo getSkinDataIndexOfMelaninMethod = typeof(PawnSkinColors)
                 .GetMethod("GetSkinDataIndexOfMelanin",
-                    BindingFlags.NonPublic | BindingFlags.Static, null, new Type[] { typeof(float) }, null);
+                    BindingFlags.NonPublic | BindingFlags.Static, null, new[] { typeof(float) }, null);
 
             // Iterate all values from 0.0f to 1.0f, using increments of 0.01f, to get the left index for each value.
             // Use this technique to construct a list of all of the indexes and their values.  Once we have the list
@@ -55,7 +53,7 @@
                     values.Add(f);
                 }
                 counter++;
-                double d = (double)counter / 100.0;
+                double d = counter / 100.0;
                 f = (float)d;
             }
             values.Add(1.0f);
@@ -99,7 +97,8 @@
             {
                 return 1.0f;
             }
-            else if (leftIndex < 0)
+
+            if (leftIndex < 0)
             {
                 return 0.0f;
             }

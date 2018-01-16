@@ -1,16 +1,11 @@
-﻿namespace AlienFaces
+﻿using System.Collections.Generic;
+using RimWorld;
+using UnityEngine;
+
+namespace AlienFaces
 {
-    using System.Collections.Generic;
-
-    using RimWorld;
-
-    using UnityEngine;
-
     public class AlienRace
     {
-        public AlienRace()
-        {
-        }
         public bool UseMelaninLevels
         {
             get; set;

@@ -1,21 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
+using AlienRace;
+using FacialStuff;
+using FacialStuff.Defs;
+using FacialStuff.FaceEditor;
+using FacialStuff.FaceEditor.UI.DTO;
+using FacialStuff.FaceEditor.UI.Util;
+using FacialStuff.Genetics;
+using FacialStuff.Utilities;
+using RimWorld;
+using UnityEngine;
+using Verse;
 
 namespace AlienFaces
 {
-    using FacialStuff;
-    using FacialStuff.Defs;
-    using FacialStuff.FaceEditor;
-    using FacialStuff.FaceEditor.UI.DTO;
-    using FacialStuff.FaceEditor.UI.Util;
-    using FacialStuff.Genetics;
-    using FacialStuff.Utilities;
-    using global::AlienRace;
-    using RimWorld;
-    using UnityEngine;
-    using Verse;
-    using Controller = FacialStuff.Controller;
-
     [StaticConstructorOnStartup]
     public class Dialog_AlienFaceStyling : Dialog_FaceStyling
     {
@@ -361,10 +359,8 @@ namespace AlienFaces
             {
                 return true;
             }
-            else
-            {
-                return false;
-            }
+
+            return false;
         }
 
         private void DrawSkinColorSelector(Rect rect)
@@ -638,7 +634,7 @@ namespace AlienFaces
                     {
                         this.RemoveColorPicker();
                         this.PawnFace.HasSameBeardColor = faceCompHasSameBeardColor;
-                        this.NewBeardColor                       = HairMelanin.DarkerBeardColor(this.NewHairColor);
+                        this.NewBeardColor                       = HairMelanin.ShuffledBeardColor(this.NewHairColor);
                     }
                 }
 
