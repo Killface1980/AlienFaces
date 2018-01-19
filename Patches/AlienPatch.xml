@@ -30,7 +30,7 @@
           <li Class = "FacialStuff.CompProperties_Face">
             <needsBlankHumanHead>false</needsBlankHumanHead>
             <hasMouth>false</hasMouth>
-            <hasBeard>false</hasBeard>
+            <hasBeard>true</hasBeard>
             <hasWrinkles>false</hasWrinkles>
             <hasEyes>false</hasEyes>
             <canRotateHead>true</canRotateHead>
