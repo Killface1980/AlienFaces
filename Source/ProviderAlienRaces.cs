@@ -137,8 +137,7 @@ namespace AlienFaces
 
             }
 
-            object hairColorGeneratorValue = GetFieldValue(raceDef, alienPartGenerator, "alienhaircolorgen", true);
-            ColorGenerator hairColorGenerator = hairColorGeneratorValue as ColorGenerator;
+            ColorGenerator hairColorGenerator = alienPartGenerator.alienhaircolorgen;
             if (hairColorGenerator != null)
             {
                 result.HairColors = primaryGenerator.GetColorList();
@@ -146,37 +145,6 @@ namespace AlienFaces
             else
             {
                 result.HairColors = null;
-            }
-
-            // Apparel properties.
-            object restrictionSettingsValue = GetFieldValue(raceDef, race, "raceRestriction", true);
-            result.RestrictedApparelOnly = false;
-            if (restrictionSettingsValue != null)
-            {
-                bool? restrictedApparelOnly = GetFieldValueAsBool(raceDef, restrictionSettingsValue, "onlyUseRaceRestrictedApparel");
-                if (restrictedApparelOnly != null)
-                {
-                    result.RestrictedApparelOnly = restrictedApparelOnly.Value;
-                }
-
-                ICollection restrictedApparelCollection = GetFieldValueAsCollection(raceDef, restrictionSettingsValue, "apparelList");
-                if (restrictedApparelCollection != null)
-                {
-                    HashSet<string> apparel = new HashSet<string>();
-                    foreach (object o in restrictedApparelCollection)
-                    {
-                        string defName = o as string;
-                        if (defName != null)
-                        {
-                            apparel.Add(defName);
-                        }
-                    }
-
-                    if (apparel.Count > 0)
-                    {
-                        result.RestrictedApparel = apparel;
-                    }
-                }
             }
 
             return result;

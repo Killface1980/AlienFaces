@@ -24,7 +24,11 @@ namespace AlienFaces
                 loadedAliens = false;
                 foreach (ModContentPack ResolvedMod in LoadedModManager.RunningMods)
                 {
-                    if (loadedAliens) break; //Save some loading
+                    if (loadedAliens)
+                    {
+                        break; //Save some loading
+                    }
+
                     if (ResolvedMod.Name.Contains("Humanoid Alien Races"))
                     {
                         Log.Message("AF :: Aliens Detected.");
@@ -42,6 +46,8 @@ namespace AlienFaces
                     AccessTools.Method(typeof(HarmonyPatchesFS), nameof(HarmonyPatchesFS.OpenStylingWindow)),
                     new HarmonyMethod(typeof(HarmonyPatchesAlien), nameof(OpenFSDialog_Prefix)),
                     null);
+
+
 
                 }
                 catch (Exception e)

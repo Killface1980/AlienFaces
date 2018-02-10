@@ -50,13 +50,6 @@ namespace AlienFaces
         {
             get; set;
         }
-        public bool RestrictedApparelOnly
-        {
-            get; set;
-        }
-        public HashSet<string> RestrictedApparel
-        {
-            get; set;
-        }
+
     }
 }
