@@ -4,6 +4,9 @@
   <author>Killface</author>
   <url></url>
   <targetVersion>0.18.0</targetVersion>
-  <description>Patch
+  <description>
+    Patch
+    Contains code from PrepareCarefully by EdB
+
   </description>
 </ModMetaData>

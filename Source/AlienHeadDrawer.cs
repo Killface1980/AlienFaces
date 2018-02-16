@@ -1,7 +1,6 @@
 ﻿using AlienRace;
 using FacialStuff;
 using UnityEngine;
-using Verse;
 
 namespace AlienFaces
 {
@@ -28,9 +27,11 @@ namespace AlienFaces
             return HarmonyPatches.GetPawnHairMesh(portrait, this.Pawn, this.HeadFacing, this.Graphics);
         }
 
-        public override void DrawAlienBodyAddons(bool portrait, Vector3 rootLoc, Quaternion quat, bool renderBody, Rot4 rotation)
+
+
+        public override void DrawAlienHeadAddons(Vector3 headPos, bool portrait, Quaternion headQuat, Vector3 currentLoc)
         {
-            HarmonyPatches.DrawAddons(portrait, this.Pawn, rootLoc, quat, rotation);
+            base.DrawAlienHeadAddons(headPos, portrait, headQuat, currentLoc);
         }
     }
 }

@@ -383,80 +383,68 @@ namespace AlienFaces
             List<string> hairTags = this.alienRace.HairTags;
             if (this.CompFace.Pawn.def.race.hasGenders)
             {
-                TabRecord item = new TabRecord(
-                                               "Female".Translate(),
-                                               delegate
-                                               {
-                                                   HairDefs = DefDatabase<HairDef>.AllDefsListForReading.FindAll(
-                                                                                                                 x =>
-                                                                                                                     x.hairTags
-                                                                                                                      .SharesElementWith(hairTags)
-                                                                                                                   &&
-                                                                                                                     (x.hairGender ==
-                                                                                                                      HairGender
-                                                                                                                     .Female ||
-                                                                                                                      x.hairGender ==
-                                                                                                                      HairGender
-                                                                                                                     .FemaleUsually
-                                                                                                                     ));
-                                                   HairDefs.SortBy(i => i.LabelCap);
-                                                   this.genderTab = GenderTab.Female;
-                                               },
-                                               this.genderTab == GenderTab.Female);
+                TabRecord item = new TabRecord("Female".Translate(), delegate
+ {
+     HairDefs = DefDatabase<HairDef>.AllDefsListForReading.FindAll(
+                                                                   x =>
+                                                                       x.hairTags
+                                                                        .SharesElementWith(hairTags)
+                                                                     &&
+                                                                       (x.hairGender ==
+                                                                        HairGender
+                                                                       .Female ||
+                                                                        x.hairGender ==
+                                                                        HairGender
+                                                                       .FemaleUsually
+                                                                       ));
+     HairDefs.SortBy(i => i.LabelCap);
+     this.genderTab = GenderTab.Female;
+ }, this.genderTab == GenderTab.Female);
                 list.Add(item);
 
-                TabRecord item2 = new TabRecord(
-                                                "Male".Translate(),
-                                                delegate
-                                                {
-                                                    HairDefs = DefDatabase<HairDef>.AllDefsListForReading.FindAll(
-                                                                                                                  x =>
-                                                                                                                      x.hairTags
-                                                                                                                       .SharesElementWith(hairTags)
-                                                                                                                    &&
-                                                                                                                      (x.hairGender ==
-                                                                                                                       HairGender
-                                                                                                                      .Male ||
-                                                                                                                       x.hairGender ==
-                                                                                                                       HairGender
-                                                                                                                      .MaleUsually
-                                                                                                                      ));
-                                                    HairDefs.SortBy(i => i.LabelCap);
-                                                    this.genderTab = GenderTab.Male;
-                                                },
-                                                this.genderTab == GenderTab.Male);
+                TabRecord item2 = new TabRecord("Male".Translate(), delegate
+ {
+     HairDefs = DefDatabase<HairDef>.AllDefsListForReading.FindAll(
+                                                                   x =>
+                                                                       x.hairTags
+                                                                        .SharesElementWith(hairTags)
+                                                                     &&
+                                                                       (x.hairGender ==
+                                                                        HairGender
+                                                                       .Male ||
+                                                                        x.hairGender ==
+                                                                        HairGender
+                                                                       .MaleUsually
+                                                                       ));
+     HairDefs.SortBy(i => i.LabelCap);
+     this.genderTab = GenderTab.Male;
+ }, this.genderTab == GenderTab.Male);
                 list.Add(item2);
 
-                TabRecord item3 = new TabRecord(
-                                                "FacialStuffEditor.Any".Translate(),
-                                                delegate
-                                                {
-                                                    HairDefs = DefDatabase<HairDef>.AllDefsListForReading.FindAll(
-                                                                                                                  x =>
-                                                                                                                      x.hairTags
-                                                                                                                       .SharesElementWith(hairTags) &&
-                                                                                                                      x.hairGender ==
-                                                                                                                      HairGender
-                                                                                                                     .Any);
-                                                    HairDefs.SortBy(i => i.LabelCap);
-                                                    this.genderTab = GenderTab.Any;
-                                                },
-                                                this.genderTab == GenderTab.Any);
+                TabRecord item3 = new TabRecord("FacialStuffEditor.Any".Translate(), delegate
+ {
+     HairDefs = DefDatabase<HairDef>.AllDefsListForReading.FindAll(
+                                                                   x =>
+                                                                       x.hairTags
+                                                                        .SharesElementWith(hairTags) &&
+                                                                       x.hairGender ==
+                                                                       HairGender
+                                                                      .Any);
+     HairDefs.SortBy(i => i.LabelCap);
+     this.genderTab = GenderTab.Any;
+ }, this.genderTab == GenderTab.Any);
                 list.Add(item3);
             }
 
-            TabRecord item4 = new TabRecord(
-                                            "FacialStuffEditor.All".Translate(),
-                                            delegate
-                                            {
-                                                HairDefs = DefDatabase<HairDef>.AllDefsListForReading.FindAll(
-                                                                                                              x => x
-                                                                                                                  .hairTags
-                                                                                                                  .SharesElementWith(hairTags));
-                                                HairDefs.SortBy(i => i.LabelCap);
-                                                this.genderTab = GenderTab.All;
-                                            },
-                                            this.genderTab == GenderTab.All);
+            TabRecord item4 = new TabRecord("FacialStuffEditor.All".Translate(), delegate
+ {
+     HairDefs = DefDatabase<HairDef>.AllDefsListForReading.FindAll(
+                                                                   x => x
+                                                                       .hairTags
+                                                                       .SharesElementWith(hairTags));
+     HairDefs.SortBy(i => i.LabelCap);
+     this.genderTab = GenderTab.All;
+ }, this.genderTab == GenderTab.All);
 
             list.Add(item4);
 

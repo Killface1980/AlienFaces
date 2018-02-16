@@ -207,7 +207,7 @@ namespace AlienFaces
                 return null;
             }
 
-            if (result.GetType() == typeof(bool))
+            if (result is bool)
             {
                 return (bool)result;
             }
