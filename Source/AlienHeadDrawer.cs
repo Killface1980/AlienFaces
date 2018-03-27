@@ -15,7 +15,7 @@ namespace AlienFaces
             HarmonyPatches.BaseHeadOffsetAtPostfix(this.Pawn.Drawer.renderer, ref offset );
         }
 
-        public override Mesh GetPawnMesh(bool wantsBody, bool portrait)
+        protected override Mesh GetPawnMesh(bool wantsBody, bool portrait)
         {
             return HarmonyPatches.GetPawnMesh(portrait, this.Pawn, wantsBody ? this.BodyFacing : this.HeadFacing,
                                               wantsBody);
