@@ -42,6 +42,7 @@ namespace AlienFaces
             {
                 try
                 {
+                    
                     harmony.Patch(
                     AccessTools.Method(typeof(HarmonyPatchesFS), nameof(HarmonyPatchesFS.OpenStylingWindow)),
                     new HarmonyMethod(typeof(HarmonyPatchesAlien), nameof(OpenFSDialog_Prefix)),

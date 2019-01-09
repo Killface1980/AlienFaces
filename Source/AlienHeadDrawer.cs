@@ -1,6 +1,7 @@
-﻿using AlienRace;
-using FacialStuff;
+﻿using FacialStuff;
 using UnityEngine;
+using AlienRace;
+
 
 namespace AlienFaces
 {

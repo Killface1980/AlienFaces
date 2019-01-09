@@ -26,7 +26,7 @@ namespace AlienFaces
         {
             get; set;
         }
-        public List<BodyType> BodyTypes
+        public List<BodyTypeDef> BodyTypes
         {
             get; set;
         }

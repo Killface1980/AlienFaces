@@ -332,7 +332,7 @@ namespace AlienFaces
             float g         = GUI.HorizontalSlider(new Rect(rect.x + 56, rect.y + 19, 136, 16), currentColor.g, 0, 1);
             GUI.color       = Color.blue;
             float b         = GUI.HorizontalSlider(new Rect(rect.x + 56, rect.y + 39, 136, 16), currentColor.b, 0, 1);
-            if (!CloseEnough(r, originalR) || !CloseEnough(g, originalG) || !CloseEnough(b, originalB))
+            if (!this.CloseEnough(r, originalR) || !this.CloseEnough(g, originalG) || !this.CloseEnough(b, originalB))
             {
                 clickedColor = new Color(r, g, b);
             }
@@ -513,7 +513,7 @@ namespace AlienFaces
         public override void DrawUI(Rect rect)
         {
             GUI.BeginGroup(rect);
-            string  pawnName = Pawn.NameStringShort;
+            string  pawnName = Pawn.Label;
             Vector2 vector   = Text.CalcSize(pawnName);
 
             Rect pawnRect  = AddPortraitWidget(0f, TitleHeight);
@@ -585,7 +585,7 @@ namespace AlienFaces
                 {
                     if (HairDefs != null && HairDefs.Count > 0)
                     {
-                        DrawColorSelector(mainRect, this.alienRace.HairColors, true);
+                        this.DrawColorSelector(mainRect, this.alienRace.HairColors, true);
                     }
 
                     if (Pawn.gender == Gender.Male)
@@ -655,7 +655,7 @@ namespace AlienFaces
                                                                                               .FemaleUsually);
                             BrowDefs.SortBy(i => i.LabelCap);
                             break;
-                        case Gender.Male:
+                        default:
                             BrowDefs = DefDatabase<BrowDef>.AllDefsListForReading.FindAll(
                                                                                           x => x.hairGender ==
                                                                                                HairGender.Male ||
@@ -714,10 +714,10 @@ namespace AlienFaces
                     {
                         if (Widgets.ButtonInvisible(rect, false))
                         {
-                            NewHairColor = (color);
+                            this.NewHairColor = (color);
                             currentColor = color;
 
-                            if (useSkincolorForHair)
+                            if (this.useSkincolorForHair)
                             {
                                 AlienPartGenerator.AlienComp comp       = Pawn.TryGetComp<AlienPartGenerator.AlienComp>();
                                 comp.skinColor = currentColor;
@@ -765,10 +765,10 @@ namespace AlienFaces
             float g         = GUI.HorizontalSlider(new Rect(rect.x + 56, rect.y + 19, 136, 16), currentColor.g, 0, 1);
             GUI.color       = Color.blue;
             float b         = GUI.HorizontalSlider(new Rect(rect.x + 56, rect.y + 39, 136, 16), currentColor.b, 0, 1);
-            if (!CloseEnough(r, originalR) || !CloseEnough(g, originalG) || !CloseEnough(b, originalB))
+            if (!this.CloseEnough(r, originalR) || !this.CloseEnough(g, originalG) || !this.CloseEnough(b, originalB))
             {
-                NewHairColor = (new Color(r, g, b));
-                if (useSkincolorForHair)
+                this.NewHairColor = (new Color(r, g, b));
+                if (this.useSkincolorForHair)
                 {
                     AlienPartGenerator.AlienComp comp       = Pawn.TryGetComp<AlienPartGenerator.AlienComp>();
                     comp.skinColor = this.NewHairColor;
