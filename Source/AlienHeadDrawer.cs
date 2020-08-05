@@ -1,6 +1,7 @@
 ﻿using FacialStuff;
 using UnityEngine;
 using AlienRace;
+using Verse;
 
 
 namespace AlienFaces
@@ -10,10 +11,14 @@ namespace AlienFaces
         // Vanilla offsets
         public new static readonly float[] HorHeadOffsets = {0f, 0.04f, 0.1f, 0.09f, 0.1f, 0.09f};
 
-        public override void BaseHeadOffsetAt(ref Vector3 offset, bool portrait)
+        public override void BaseHeadOffsetAt(ref Vector3 offset, bool portrait, Pawn pawn)
         {
-            base.BaseHeadOffsetAt(ref offset, portrait);
-            HarmonyPatches.BaseHeadOffsetAtPostfix(this.Pawn.Drawer.renderer, ref offset );
+            base.BaseHeadOffsetAt(ref offset, portrait, pawn);
+                Vector2 newOffset = HarmonyPatches.BaseHeadOffsetAtHelper(new Vector2(offset.x, offset.z), pawn);
+                offset.x += newOffset.x;
+                offset.z += newOffset.y;
+
+            // HarmonyPatches.BaseHeadOffsetAtPostfix(this.Pawn.Drawer.renderer, ref offset );
         }
 
         protected override Mesh GetPawnMesh(bool wantsBody, bool portrait)

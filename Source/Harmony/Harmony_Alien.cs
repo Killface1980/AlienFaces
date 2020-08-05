@@ -11,7 +11,7 @@
     {
         static Harmony_Alien()
         {
-            HarmonyInstance harmony = HarmonyInstance.Create("rimworld.facialstuff.alien_patch");
+            var harmony = new Harmony("rimworld.facialstuff.alien_patch");
 
             try
             {

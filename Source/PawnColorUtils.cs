@@ -9,6 +9,7 @@ using Verse;
 
 namespace AlienFaces
 {
+    // Taken from Prepare Carefully
     public static class PawnColorUtils
     {
         // The values will match the color values in the PawnSkinColors class.  We use a round-about way of getting at
@@ -219,7 +220,7 @@ namespace AlienFaces
 
                 return result;
             }
-            Log.Warning("Prepare Carefully could not find a valid matching value for the saved Color");
+            Log.Warning("AlienFaces could not find a valid matching value for the saved Color");
             return 0.5f;
         }
     }

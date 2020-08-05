@@ -10,6 +10,7 @@ using Verse;
 
 namespace AlienFaces
 {
+    // Taken from PrepareCarefully for Alien Races support.
     public static class ProviderAlienRaces
     {
         public static Dictionary<ThingDef_AlienRace, AlienRace> lookup = new Dictionary<ThingDef_AlienRace, AlienRace>();
@@ -156,7 +157,7 @@ namespace AlienFaces
                 FieldInfo field = source.GetType().GetField(name, BindingFlags.Public | BindingFlags.Instance);
                 if (field == null)
                 {
-                    Log.Warning("Prepare carefully could not find " + name + " field for " + raceDef.defName);
+                    Log.Warning("AlienFaces could not find " + name + " field for " + raceDef.defName);
                     return null;
                 }
 
@@ -165,7 +166,7 @@ namespace AlienFaces
                 {
                     if (!allowNull)
                     {
-                        Log.Warning("Prepare carefully could not find " + name + " field value for " + raceDef.defName);
+                        Log.Warning("AlienFaces could not find " + name + " field value for " + raceDef.defName);
                     }
 
                     return null;
@@ -175,7 +176,7 @@ namespace AlienFaces
             }
             catch (Exception)
             {
-                Log.Warning("Prepare carefully could resolve value of the " + name + " field for " + raceDef.defName);
+                Log.Warning("AlienFaces could resolve value of the " + name + " field for " + raceDef.defName);
                 return null;
             }
         }
@@ -191,7 +192,7 @@ namespace AlienFaces
             ICollection collection = result as ICollection;
             if (collection == null)
             {
-                Log.Warning("Prepare carefully could not convert " + name + " field value into a collection for " + raceDef.defName + ".");
+                Log.Warning("AlienFaces could not convert " + name + " field value into a collection for " + raceDef.defName + ".");
                 return null;
             }
 
@@ -211,7 +212,7 @@ namespace AlienFaces
                 return (bool)result;
             }
 
-            Log.Warning("Prepare carefully could not convert " + name + " field value into a bool for " + raceDef.defName + ".");
+            Log.Warning("AlienFaces could not convert " + name + " field value into a bool for " + raceDef.defName + ".");
             return null;
         }
 
@@ -229,7 +230,7 @@ namespace AlienFaces
                 return result;
             }
 
-            Log.Warning("Prepare carefully could not convert " + name + " field value into a string for " + raceDef.defName + ".");
+            Log.Warning("AlienFaces could not convert " + name + " field value into a string for " + raceDef.defName + ".");
             return null;
         }
     }

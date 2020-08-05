@@ -3,7 +3,7 @@ using System.Reflection;
 using AlienRace;
 using FacialStuff;
 using FacialStuff.Harmony;
-using Harmony;
+using HarmonyLib;
 using Verse;
 
 namespace AlienFaces
@@ -16,7 +16,7 @@ namespace AlienFaces
 
         static HarmonyPatchesAlien()
         {
-            HarmonyInstance harmony = HarmonyInstance.Create("rimworld.alienface.patches");
+            Harmony harmony = new Harmony("rimworld.alienface.patches");
             harmony.PatchAll(Assembly.GetExecutingAssembly());
 
             if (!modCheck)

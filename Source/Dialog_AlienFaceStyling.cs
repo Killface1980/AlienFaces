@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using AlienRace;
 using FacialStuff;
 using FacialStuff.Defs;
@@ -7,6 +8,7 @@ using FacialStuff.FaceEditor;
 using FacialStuff.FaceEditor.UI.DTO;
 using FacialStuff.FaceEditor.UI.Util;
 using FacialStuff.Genetics;
+using FacialStuff.Harmony;
 using FacialStuff.Utilities;
 using RimWorld;
 using UnityEngine;
@@ -28,10 +30,10 @@ namespace AlienFaces
             if (race != null && race.HasHair)
             {
                 HairDefs = DefDatabase<HairDef>.AllDefsListForReading.FindAll(
-                                                                              x =>
-                                                                                  x.hairTags
-                                                                                   .SharesElementWith(this.alienRace
-                                                                                                          .HairTags));
+                    x =>
+                        x.hairTags
+                            .SharesElementWith(this.alienRace
+                                .HairTags) && !x.IsBeardNotHair());
                 CurrentFilter = race.HairTags;
             }
 
@@ -105,7 +107,7 @@ namespace AlienFaces
                 list.Add(item4);
             }
 
-            if (Controller.settings.ShowBodyChange)
+            if (Controller.settings.ShowBodyChange && Current.ProgramState == ProgramState.Playing)
             {
                 TabRecord item5 = new TabRecord(
                                                 "FacialStuffEditor.TypeSelector".Translate(),
@@ -395,9 +397,9 @@ namespace AlienFaces
                                                                        .Female ||
                                                                         x.hairGender ==
                                                                         HairGender
-                                                                       .FemaleUsually
+                                                                       .FemaleUsually && !x.IsBeardNotHair()
                                                                        ));
-     HairDefs.SortBy(i => i.LabelCap);
+     HairDefs=HairDefs.OrderBy(i => i.LabelCap).ToList();
      this.genderTab = GenderTab.Female;
  }, this.genderTab == GenderTab.Female);
                 list.Add(item);
@@ -414,35 +416,35 @@ namespace AlienFaces
                                                                        .Male ||
                                                                         x.hairGender ==
                                                                         HairGender
-                                                                       .MaleUsually
+                                                                       .MaleUsually && !x.IsBeardNotHair()
                                                                        ));
-     HairDefs.SortBy(i => i.LabelCap);
+     HairDefs = HairDefs.OrderBy(i => i.LabelCap).ToList();
      this.genderTab = GenderTab.Male;
  }, this.genderTab == GenderTab.Male);
                 list.Add(item2);
 
                 TabRecord item3 = new TabRecord("FacialStuffEditor.Any".Translate(), delegate
- {
-     HairDefs = DefDatabase<HairDef>.AllDefsListForReading.FindAll(
-                                                                   x =>
-                                                                       x.hairTags
-                                                                        .SharesElementWith(hairTags) &&
-                                                                       x.hairGender ==
-                                                                       HairGender
-                                                                      .Any);
-     HairDefs.SortBy(i => i.LabelCap);
+                    {
+                        HairDefs = DefDatabase<HairDef>.AllDefsListForReading.FindAll(
+                            x =>
+                                x.hairTags
+                                    .SharesElementWith(hairTags) &&
+                                x.hairGender ==
+                                HairGender
+                                    .Any && !x.IsBeardNotHair());
+     HairDefs = HairDefs.OrderBy(i => i.LabelCap).ToList();
      this.genderTab = GenderTab.Any;
  }, this.genderTab == GenderTab.Any);
                 list.Add(item3);
             }
 
             TabRecord item4 = new TabRecord("FacialStuffEditor.All".Translate(), delegate
- {
-     HairDefs = DefDatabase<HairDef>.AllDefsListForReading.FindAll(
-                                                                   x => x
-                                                                       .hairTags
-                                                                       .SharesElementWith(hairTags));
-     HairDefs.SortBy(i => i.LabelCap);
+                {
+                    HairDefs = DefDatabase<HairDef>.AllDefsListForReading.FindAll(
+                        x => x
+                                 .hairTags
+                                 .SharesElementWith(hairTags) && !x.IsBeardNotHair());
+     HairDefs = HairDefs.OrderBy(i => i.LabelCap).ToList();
      this.genderTab = GenderTab.All;
  }, this.genderTab == GenderTab.All);
 
@@ -653,7 +655,7 @@ namespace AlienFaces
                                                                                                x.hairGender ==
                                                                                                HairGender
                                                                                               .FemaleUsually);
-                            BrowDefs.SortBy(i => i.LabelCap);
+                            BrowDefs = BrowDefs.OrderBy(i => i.LabelCap).ToList();
                             break;
                         default:
                             BrowDefs = DefDatabase<BrowDef>.AllDefsListForReading.FindAll(
@@ -661,7 +663,7 @@ namespace AlienFaces
                                                                                                HairGender.Male ||
                                                                                                x.hairGender ==
                                                                                                HairGender.MaleUsually);
-                            BrowDefs.SortBy(i => i.LabelCap);
+                            BrowDefs = BrowDefs.OrderBy(i => i.LabelCap).ToList();
                             break;
                     }
 
